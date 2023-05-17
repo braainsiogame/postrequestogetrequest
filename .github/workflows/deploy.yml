@@ -14,12 +14,15 @@ jobs:
       contents: read # Needed to clone the repository
 
     steps:
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1.1.2
+        
       - name: Clone repository
         uses: actions/checkout@v3
 
       - name: Build step
         run: deno task build # 📝 Update the build command(s)
-
+        
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
